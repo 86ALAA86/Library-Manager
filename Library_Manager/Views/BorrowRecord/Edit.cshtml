@@ -1,0 +1,67 @@
+﻿
+@model clsBorrowRecord_BLL
+<body>
+	<div>
+		<div class="card shadow-sm">
+			<div class="card-header bg-warning text-white">
+						<h5>Edit Book</h5>
+			</div>
+			<div class="card-body">
+
+				<form method="post" asp-controller="BorrowRecord" asp-action="Edit">
+
+					<input type="hidden" asp-for="@Model.RecordID" />
+
+				<div class="mb-3">
+				<label asp-for="BorrowerName" class="form-label">Borrower Name:</label>
+				<input asp-for="BorrowerName" class="form-control" placeholder= "Borrower Name" />
+				<span asp-validation-for="BorrowerName" class="text-danger"></span>
+
+			</div>
+
+			<div class="mb-3">
+				<label asp-for="BorrowDate" class="form-label">Borrow Date:</label>
+				<input asp-for="BorrowDate" class="form-control" placeholder= "Date" />
+				<span asp-validation-for="BorrowDate" class="text-danger"></span>
+
+			</div>
+
+			<div class="mb-3">
+				<label asp-for="ReturnDate" class="form-label">Return Date:</label>
+				<input asp-for="ReturnDate" class="form-control" placeholder= "Date" />
+				<span asp-validation-for="ReturnDate" class="text-danger"></span>
+
+			</div>
+
+			<div class="mb-3">
+				<label asp-for="BookID" class="form-label">Book :</label>
+				<select asp-for="BookID" class="form-select"
+				asp-items="@(new SelectList(ViewBag.Books,"BookID","Title"))">
+						   <option value="" > Select A Value</option>
+				</select>
+				<span asp-validation-for="BookID" class="text-danger"></span>
+
+			</div>
+
+			<div class="mb-3">
+				<label asp-for="Status" class="form-label">Status :</label>
+				<select asp-for="Status" class="form-select"
+				asp-items="@(new SelectList(new []{"Active","Returned","OverDue"}))">
+						   <option value="" > Select A Value</option>
+				</select>
+				<span asp-validation-for="Status" class="text-danger"></span>
+
+			</div>
+
+
+
+			<button type="submit" class="btn btn-success">Save</button>
+			<a asp-action="ShowAll" class="btn btn-secondary">Cansel</a>
+
+		</form>
+
+			</div>
+
+		
+
+</body>

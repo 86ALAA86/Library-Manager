@@ -1,0 +1,59 @@
+﻿@model List<clsBorrowRecord_BLL>
+<body>
+	<div class="container mt-4">
+		<h1>All Borrow Records :</h1>
+		<a asp-controller="BorrowRecord" asp-action="Create" class="btn btn-primary btn-lg">Borrow Book </a>
+
+		<br />
+
+		<table class="table table-striped table-hover">
+			<thead class="table-dark">
+				<tr>
+					<th>Record ID</th><th>Book ID</th><th>Title</th><th>Borrower Name</th>
+					<th>BorrowDate</th><th>ReturnDate</th><th>Status</th><th colspan="2">Actions</th>
+				</tr>
+
+			</thead>
+			<tbody>
+				@foreach(clsBorrowRecord_BLL B in @Model)
+				{
+					<tr>
+						<td>@B.RecordID</td><td>@B.BookID</td><td>@B.Title</td><td>@B.BorrowerName</td>
+						<td>@B.BorrowDate</td><td>@B.ReturnDate</td><td>@B.Status</td>
+						<td>
+							<a asp-controller="BorrowRecord" asp-action="Edit" asp-route-id="@B.RecordID"
+							class="btn btn-warning"> Edit</a>
+
+						</td>
+
+						<td>
+							<form method="post" asp-action="Delete" asp-controller="BorrowRecord">
+								<button onclick="return confirm('Are you sure you want to delete this book?')" 
+									class="btn btn-danger" name="id" value="@B.RecordID">
+									Delete
+								</button>
+
+
+							</form>
+							
+
+						</td>
+
+					</tr>
+				}
+
+
+
+			</tbody>
+
+
+
+		</table>
+
+
+	</div>
+
+
+
+
+</body>

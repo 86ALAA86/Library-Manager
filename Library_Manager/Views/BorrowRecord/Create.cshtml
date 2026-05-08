@@ -1,0 +1,40 @@
+﻿
+@model clsBorrowRecord_BLL
+<body>
+	<div>
+		<div class="card shadow-sm">
+			<div class="card-header bg-primary text-white">
+						<h5>Borrow A Book :</h5>
+			</div>
+			<div class="card-body">
+				<form method="post" asp-controller="BorrowRecord" asp-action="Create">
+
+			<div class="mb-3">
+				<label asp-for="BorrowerName" class="form-label">Borrower Name:</label>
+				<input asp-for="BorrowerName" class="form-control" placeholder= "Borrower Name" />
+				<span asp-validation-for="BorrowerName" class="text-danger"></span>
+
+			</div>
+
+			<div class="mb-3">
+				<label asp-for="BookID" class="form-label">Book :</label>
+				<select asp-for="BookID" class="form-select"
+				asp-items="@(new SelectList(ViewBag.Books,"BookID","Title"))">
+						   <option value="" > Select A Value</option>
+				</select>
+				<span asp-validation-for="BookID" class="text-danger"></span>
+
+			</div>
+
+			
+
+			<button type="submit" class="btn btn-success">Save</button>
+			<a asp-action="ShowAll" class="btn btn-secondary">Cancel</a>
+
+		</form>
+
+			</div>
+
+		
+
+</body>
